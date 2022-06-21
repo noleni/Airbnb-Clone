@@ -10,7 +10,8 @@
     <% @flats.each do |flat| %>
       <div class="card p-2">
         <%= link_to flat_path(flat), class: 'text-decoration-none card-text' do%>
-          <h4 class=""><%= flat.name %></h4>
+          <%= cl_image_tag flat.photo.key, :aspect_ratio=>"2.5", :width=>400, :crop=>"crop" %>
+          <h4 class="mt-2"><%= flat.name %></h4>
           <p><%= flat.address %></p>
           <div class="d-flex flex-row">
             <p class="px-1"><i class="fa-solid fa-person px-1"></i><%= flat.number_of_guests %></p>

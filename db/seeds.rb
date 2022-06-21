@@ -1,35 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+require "open-uri"
 
 Flat.destroy_all
+puts "all flats destroyed"
 
-Flat.create!(
-  name: 'Light & Spacious Garden Flat',
-  address: '10 Clifton Gardens London W9 1DT',
-  description: 'A lovely summer feel for this spacious garden flat. Two double bedrooms, open plan living area, large kitchen and a beautiful conservatory',
-  price_per_night: 75,
-  number_of_guests: 3
-)
+User.destroy_all
+puts "all users destroyed"
 
-Flat.create!(
-  name: 'Petit chalet à la montagne',
-  address: 'Les Carroz',
-  description: 'Le plus beau châlet de la station, au pied des pistes',
-  price_per_night: 120,
+user1 = User.create!(email: 'test@test.com', username: 'Julie', password: 'azerty')
+user2 = User.create!(email: 'test2@test.com', username: 'Momo', password: 'azerty')
+user3 = User.create!(email: 'test3@test.com', username: 'Enzo', password: 'azerty')
+user4 = User.create!(email: 'test4@test.com', username: 'Gaby', password: 'azerty')
+
+puts "Users created !"
+
+flat1 = Flat.new(
+  user: user1,
+  name: "Grand Loft",
+  address: "10 rue Oberkampf Paris",
+  description: "Magnifique loft très lumineux",
+  price_per_night: 150,
   number_of_guests: 4
 )
+flat1.photo.attach(
+  io: URI.open('https://a0.muscache.com/im/pictures/64d85e0e-bab6-4abb-a604-8465f9a436b3.jpg'),
+  filename: 'anyname.jpg', # use the extension of the attached file here (found at the end of the url)
+  content_type: 'image/jpg'
+  )
+flat1.save!
 
-Flat.create!(
-  name: 'Une payotte au bord de la mer',
-  address: 'Porquerolles',
-  description: 'Jolie payotte vue sur mer',
-  price_per_night: 90,
-  number_of_guests: 2
-)
 
-puts "Seed created !"
+puts "Flats created !"
