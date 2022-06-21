@@ -1,0 +1,26 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+
+}
+
+.card {
+  background: #F8F9FA;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+
+}
+
+.card-text {
+  color: #495057;
+}
+
+.card :hover {
+  color: black;
+}
+
+.more-info {
+  background: white;
+  width: 100%;
+}
