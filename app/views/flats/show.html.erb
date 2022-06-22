@@ -1,11 +1,17 @@
 <div class="container">
-
-  <h2><%= @flat.name %></h2>
-  <h3><%= @flat.address %></h3>
-  <h3><%= @flat.description %></h3>
-  <div style="width: 100%; height: 300px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="row">
+    <div class="col-8">
+      <h2><%= @flat.name %></h2>
+      <h3><%= @flat.address %></h3>
+      <h3><%= @flat.description %></h3>
+      <div style="width: 100%; height: 300px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+    <div class="col-4">
+      <%= render "bookings/form", flat: @flat, booking: @booking %>
+    </div>
   </div>
 </div>

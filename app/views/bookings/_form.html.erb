@@ -1,0 +1,5 @@
+  <%= simple_form_for [flat, booking] do |f| %>
+    <%= f.input :date, label: 'Pick a date for your booking' %>
+
+    <%= f.submit "Validate", class: "btn btn-primary" %>
+  <% end %>
