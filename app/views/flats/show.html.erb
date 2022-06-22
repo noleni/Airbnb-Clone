@@ -10,12 +10,12 @@
       </div>
       <%= cl_image_tag @flat.photo.key, :crop=>"crop", class:'image-card-index' %>
     </div>
-    <div class="col-4"
+    <div class="col-4 px-5"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class="col-4 booking-form">
+    <div class="col-4">
       <%= render "bookings/form", flat: @flat, booking: @booking %>
     </div>
   </div>

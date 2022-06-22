@@ -7,11 +7,11 @@
     </div>
 
 <div class="col-8">
-  <div class="d-flex">
+  <div class="d-flex ps-3">
       <h2 class="my-5">All flats (<%= @flats.count %>)</h2>
       <%= image_tag 'undraw_Small_town_re_7mcn.png', :size => '260x180' %>
   </div>
-    <div class="cards">
+    <div class="cards ps-3">
       <% @flats.each do |flat| %>
         <div class="card p-2">
           <%= link_to flat_path(flat), class: 'text-decoration-none card-text' do%>

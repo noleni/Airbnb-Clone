@@ -1,5 +1,22 @@
-<h2>Hello <%= @user.username %></h2>
+<div class="container mt-5">
 
-<% @bookings.each do |booking| %>
-  <%= booking.flat.name %>
-<% end %>
+  <h2>Hello <%= @user.username %></h2>
+
+  <h4>My upcoming bookings</h4>
+  <% @bookings.each do |booking| %>
+    <%= booking.flat.name %>
+    <%= booking.flat.user.username %>
+  <% end %>
+
+  <h4>My flats</h4>
+  <% @my_flats.each do |flat| %>
+    <%= flat.name %>
+  <% end %>
+
+  <h4>My booked flats</h4>
+  <%  @my_flats_bookings.each do |flat| %>
+    <%= flat.name %>
+    <%= flat.user.username %>
+  <% end %>
+
+</div>

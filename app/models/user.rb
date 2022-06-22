@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :flats
   has_many :bookings
+
+  has_many :user_rented_flats, through: :flats, source: :bookings
 end

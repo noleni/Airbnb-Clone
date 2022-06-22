@@ -1,6 +1,8 @@
-  <h2>Your booking</h2>
+<h2>Your booking</h2>
+<div class="p-3 booking-form">
   <%= simple_form_for [flat, booking] do |f| %>
     <%= f.input :date, label: 'From' %>
     <%= f.input :end_date, label: 'To' %>
     <%= f.submit "Validate", class: "btn-mine" %>
   <% end %>
+</div>
