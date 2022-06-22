@@ -1,0 +1,15 @@
+.btn-mine {
+  color: black;
+  border: 1px solid #C2C2C2;
+  padding: 12px 20px;
+  border-radius: 30px;
+  opacity: 0.85;
+  transition: opacity, background-color 1sec ;
+}
+
+.btn-mine:hover {
+  opacity: 1;
+  background-color: #edca82;
+  border: 2px solid white;
+  color: white
+}

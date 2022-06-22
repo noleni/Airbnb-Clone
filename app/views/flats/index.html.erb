@@ -1,28 +1,32 @@
-<div style="width: 100%; height: 300px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-
 <div class="container">
-  <h2 class="my-5">All flats (<%= @flats.count %>)</h2>
-  <div class="cards">
-    <% @flats.each do |flat| %>
-      <div class="card p-2">
-        <%= link_to flat_path(flat), class: 'text-decoration-none card-text' do%>
-          <%= cl_image_tag flat.photo.key, :aspect_ratio=>"2.5", :width=>400, :crop=>"crop" %>
-          <h4 class="mt-2"><%= flat.name %></h4>
-          <p><%= flat.address %></p>
-          <div class="d-flex flex-row">
-            <p class="px-1"><i class="fa-solid fa-person px-1"></i><%= flat.number_of_guests %></p>
-            <p class="px-1"><i class="fa-solid fa-euro-sign px-1"></i><%= flat.price_per_night %></p>
+  <div class="row">
+    <div class="col-4"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+<div class="col-8">
+    <h2 class="my-5">All flats (<%= @flats.count %>)</h2>
+    <div class="cards">
+      <% @flats.each do |flat| %>
+        <div class="card p-2">
+          <%= link_to flat_path(flat), class: 'text-decoration-none card-text' do%>
+            <%= cl_image_tag flat.photo.key, height: 180, width: 400, :quality=>"auto", :fetch_format=>:auto, gravity:"faces" , :crop=>"fill", class:'image-card-index' %>
+            <h4 class="mt-2"><%= flat.name %></h4>
+            <p><%= flat.address %></p>
+            <div class="d-flex flex-row">
+              <p class="px-1"><i class="fa-solid fa-person px-1"></i><%= flat.number_of_guests %></p>
+              <p class="px-1"><i class="fa-solid fa-euro-sign px-1"></i><%= flat.price_per_night %></p>
+            </div>
+          <% end%>
+            <div class="more-info d-flex flex-row">
+              <p class="pe-3"><%= link_to 'Edit', edit_flat_path(flat), class:'link-warning text-decoration-none'%></p>
+              <p><%= link_to 'Delete', flat_path(flat), class:'link-danger text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+            </div>
           </div>
-        <% end%>
-          <div class="more-info d-flex flex-row">
-            <p class="pe-3"><%= link_to 'Edit', edit_flat_path(flat), class:'link-warning text-decoration-none'%></p>
-            <p><%= link_to 'Delete', flat_path(flat), class:'link-danger text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
-          </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
+    </div>
   </div>
 </div>
